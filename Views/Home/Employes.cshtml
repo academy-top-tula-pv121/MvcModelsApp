@@ -1,0 +1,31 @@
+﻿@using MvcModelsApp.Models;
+@using MvcModelsApp.Models.ViewModels;
+
+@model ComplexModel
+
+<form>
+    <label>Company name: </label>
+    <select name="companyId">
+        @foreach(CompanyModel c in Model.Companies)
+        {
+            <option value="@c.Id">@c.Title</option>
+        }
+    </select>
+    <input type="submit" value="Select" />
+</form>
+<br />
+<table>
+    <tr>
+        <th>Name</th>
+        <th>Age</th>
+        <th>Company</th>
+    </tr>
+    @foreach (var e in Model.Employes)
+    {
+        <tr>
+            <td>@e.Name</td>
+            <td>@e.Age</td>
+            <td>@e.Company?.Title</td>
+        </tr>
+    }
+</table>
